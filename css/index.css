@@ -91,9 +91,28 @@ section {
     color: #e94560;
 }
 
-/* Skills and Projects */
-#Skills, #Projects {
-    padding: 40px;
-    margin: 20px auto;
-    max-width: 900px;
+/* Skills */
+#Skills ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    list-style: none;
+    padding: 0;
+}
+
+#Skills li {
+    background-color: #16213e;
+    color: #e0e0e0;
+    padding: 15px 20px;
+    border-radius: 8px;
+    border-left: 4px solid #e94560;
+}
+
+/* Footer */
+footer {
+    background-color: #16213e;
+    color: #e0e0e0;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
 }
