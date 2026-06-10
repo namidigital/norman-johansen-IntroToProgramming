@@ -6,25 +6,32 @@ const searchBtn = document.getElementById('search-btn');
 const countryInput = document.getElementById('country-input');
 const results = document.getElementById('results');
 
-// Switch to Country Info mode
 btnInfo.addEventListener('click', function(e) {
     e.preventDefault();
     currentMode = 'info';
     btnInfo.classList.add('active');
     btnDetails.classList.remove('active');
-    results.innerHTML = '<p style="text-align:center">Search for a country to see basic info.</p>';
+    const country = countryInput.value.trim();
+    if (country) {
+        fetchCountryInfo(country);
+    } else {
+        results.innerHTML = '<p style="text-align:center">Search for a country to see basic info.</p>';
+    }
 });
 
-// Switch to Country Details mode
 btnDetails.addEventListener('click', function(e) {
     e.preventDefault();
     currentMode = 'details';
     btnDetails.classList.add('active');
     btnInfo.classList.remove('active');
-    results.innerHTML = '<p style="text-align:center">Search for a country to see detailed info.</p>';
+    const country = countryInput.value.trim();
+    if (country) {
+        fetchCountryDetails(country);
+    } else {
+        results.innerHTML = '<p style="text-align:center">Search for a country to see detailed info.</p>';
+    }
 });
 
-// Search button
 searchBtn.addEventListener('click', function() {
     const country = countryInput.value.trim();
     if (!country) {
@@ -38,10 +45,10 @@ searchBtn.addEventListener('click', function() {
     }
 });
 
-// Endpoint 1 - Basic Info
+// Endpoint 1 - Basic Info (name, population, region, area)
 function fetchCountryInfo(country) {
     results.innerHTML = '<p style="text-align:center">Loading...</p>';
-    fetch(`https://restcountries.com/v3.1/name/${country}`)
+    fetch(`https://restcountries.com/v3.1/name/${country}?fields=name,population,region,subregion,area,flag`)
         .then(response => {
             if (!response.ok) {
                 throw new Error('Country not found');
@@ -59,6 +66,7 @@ function fetchCountryInfo(country) {
                     <p><strong>Population:</strong> ${c.population.toLocaleString()}</p>
                     <p><strong>Region:</strong> ${c.region}</p>
                     <p><strong>Subregion:</strong> ${c.subregion || 'N/A'}</p>
+                    <p><strong>Area:</strong> ${c.area ? c.area.toLocaleString() + ' km²' : 'N/A'}</p>
                 `;
                 results.appendChild(card);
             });
@@ -68,10 +76,10 @@ function fetchCountryInfo(country) {
         });
 }
 
-// Endpoint 2 - Detailed Info
+// Endpoint 2 - Detailed Info (capital, languages, currencies, timezone)
 function fetchCountryDetails(country) {
     results.innerHTML = '<p style="text-align:center">Loading...</p>';
-    fetch(`https://restcountries.com/v3.1/name/${country}`)
+    fetch(`https://restcountries.com/v3.1/name/${country}?fields=name,capital,languages,currencies,timezones,flag`)
         .then(response => {
             if (!response.ok) {
                 throw new Error('Country not found');
