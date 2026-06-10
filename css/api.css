@@ -1,0 +1,94 @@
+body {
+    background-color: #1a1a2e;
+    color: #e0e0e0;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    background-color: #16213e;
+    padding: 15px;
+    text-align: center;
+    position: sticky;
+    top: 0;
+}
+
+nav a {
+    color: #e94560;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover, nav a.active {
+    color: #ffffff;
+}
+
+h1 {
+    font-size: 2.5em;
+    color: #e94560;
+    text-align: center;
+    padding: 20px;
+}
+
+#search-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 20px;
+}
+
+#country-input {
+    padding: 10px;
+    width: 300px;
+    background-color: #16213e;
+    color: #e0e0e0;
+    border: 1px solid #e94560;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+#search-btn {
+    padding: 10px 20px;
+    background-color: #e94560;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+#search-btn:hover {
+    background-color: #ffffff;
+    color: #e94560;
+}
+
+#results {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+.country-card {
+    background-color: #16213e;
+    border-left: 4px solid #e94560;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 15px;
+}
+
+.country-card h2 {
+    color: #e94560;
+    margin-top: 0;
+}
+
+.country-card p {
+    margin: 8px 0;
+}
+
+.error {
+    color: #e94560;
+    text-align: center;
+    font-size: 1.2em;
+}
